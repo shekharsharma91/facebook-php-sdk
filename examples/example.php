@@ -37,7 +37,7 @@ if ($user) {
     // Proceed knowing you have a logged in user who's authenticated.
     $user_profile = $facebook->api('/me');
   } catch (FacebookApiException $e) {
-    error_log($e);
+    error_log($e); //if error log is created then check it regularly as it helps in debugging!!
     $user = null;
   }
 }
@@ -46,7 +46,9 @@ if ($user) {
 if ($user) {
   $logoutUrl = $facebook->getLogoutUrl();
 } else {
-  $loginUrl = $facebook->getLoginUrl();
+  //you can use --->>  $loginUrl = $facebook->getLoginUrl(); or you can use below method for login url. This method enables the way for scope variable. 
+  $loginUrl = $facebook->getLoginUrl(array( 'scope' => 'email,user_birthday' , ));
+
 }
 
 // This call will always work since we are fetching public data.
