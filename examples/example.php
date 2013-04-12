@@ -46,7 +46,9 @@ if ($user) {
 if ($user) {
   $logoutUrl = $facebook->getLogoutUrl();
 } else {
-  //you can use --->>  $loginUrl = $facebook->getLoginUrl(); or you can use below method for login url. This method enables the way for scope variable. 
+  //you can use --->>  $loginUrl = $facebook->getLoginUrl(); 
+  //or 
+  //you can use below method for login url. This method enables the way for scope variable. 
   $loginUrl = $facebook->getLoginUrl(array( 'scope' => 'email,user_birthday' , ));
 
 }
